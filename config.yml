@@ -1,0 +1,22 @@
+logging:
+  level: INFO
+  loggers:
+    com.example.training: DEBUG
+
+server:
+  type: default
+  maxThreads: 1024
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
+
+grpcServer:
+  hostname: localhost
+  port: 8083
+
+externalService:
+  hostname: localhost
+  port: 8083

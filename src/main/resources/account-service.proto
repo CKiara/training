@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package com.example.training.grpc.accountservice;
+option java_package = "com.example.training.grpc.accountservice";
+option java_multiple_files = true;
+
+enum Gender
+{
+  M = 0;
+  F = 1;
+}
+
+enum State
+{
+  TX = 0;
+  MD = 1;
+  ID = 2;
+  AL = 3;
+  ME = 4;
+  TN = 5;
+  WY = 6;
+  DC = 7;
+  MA = 8;
+  ND = 9;
+  IL = 10;
+  VA = 11;
+  WA = 12;
+  PA = 13;
+  IN = 14;
+  OK = 15;
+  DE = 16;
+  RI = 17;
+  BO = 18;
+}
+
+service AccountService {
+  rpc findAll(Empty) returns (stream AccountResponse) {};
+  rpc findAllByStateAndAverage(Empty) returns (AccountBalanceAverageByStateResponse) {};
+  rpc create(NewAccount) returns (AccountResponse) {};
+}
+
+message AccountIdRequest {
+  string Uid = 1;
+}
+
+message NewAccount {
+  int32 balance = 2;
+  string firstname = 3;
+  string lastname = 4;
+  int32 age = 5;
+  Gender gender = 6;
+  string address = 7;
+  string employer = 9;
+  string email = 10;
+  string city = 11;
+  State state = 12;
+}
+
+message AccountResponse {
+  int64 accountNumber = 1;
+  int32 balance = 2;
+  string firstname = 3;
+  string lastname = 4;
+  int32 age = 5;
+  Gender gender = 6;
+  string address = 7;
+  string employer = 9;
+  string email = 10;
+  string city = 11;
+  State state = 12;
+}
+
+message BalanceAverageByStateResponse {
+  string state = 1;
+  int64 docCount = 2;
+  double balanceAverage = 3;
+}
+
+message AccountBalanceAverageByStateResponse {
+  repeated BalanceAverageByStateResponse balanceAverageByStateResponse =  1;
+  int64 docCount = 2;
+  int64 maxBalance = 3;
+  int64 minBalance = 4;
+}
+
+message Empty {}
