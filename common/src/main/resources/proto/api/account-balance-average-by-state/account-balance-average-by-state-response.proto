@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package proto.api.accountBalanceAverageByState;
+option java_package = "com.example.common.api.accountBalanceAverageByStateResponse";
+option java_multiple_files = true;
+
+message BalanceAverageByStateResponse {
+  string state = 1;
+  int64 docCount = 2;
+  double balanceAverage = 3;
+}
+
+message AccountBalanceAverageByStateResponse {
+  repeated BalanceAverageByStateResponse balanceAverageByStateResponse =  1;
+  int64 docCount = 2;
+  int64 maxBalance = 3;
+  int64 minBalance = 4;
+}

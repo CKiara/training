@@ -1,0 +1,17 @@
+logging:
+  level: INFO
+  loggers:
+    com.example.account: DEBUG
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 8082
+  adminConnectors:
+    - type: http
+      port: 8083
+
+externalService:
+  hostname: 172.21.0.3
+  port: 8084
+  shutdownDuration: 10 seconds
