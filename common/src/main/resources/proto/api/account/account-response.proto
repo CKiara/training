@@ -1,0 +1,20 @@
+syntax = "proto3";
+import "proto/api/account/account-common.proto";
+
+package proto.api.account;
+option java_package = "com.example.common.api.accountResponse";
+option java_multiple_files = true;
+
+message AccountResponse {
+  int64 accountNumber = 1;
+  int32 balance = 2;
+  string firstname = 3;
+  string lastname = 4;
+  int32 age = 5;
+  proto.api.account.GenderCommon gender = 6;
+  string address = 7;
+  string employer = 9;
+  string email = 10;
+  string city = 11;
+  proto.api.account.StateCommon state = 12;
+}

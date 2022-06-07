@@ -1,0 +1,16 @@
+syntax = "proto3";
+import "proto/api/account/account-request.proto";
+import "proto/api/account/account-response.proto";
+import "proto/api/account-balance-average-by-state/account-balance-average-by-state-response.proto";
+
+package core.account;
+option java_package = "com.example.common.core.account";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+
+service AccountService {
+  rpc findAll(google.protobuf.Empty) returns (stream proto.api.account.AccountResponse) {};
+  rpc findAllByStateAndAverage(google.protobuf.Empty) returns (proto.api.accountBalanceAverageByState.AccountBalanceAverageByStateResponse) {};
+  rpc create(proto.api.account.AccountRequest) returns (proto.api.account.AccountResponse) {};
+}
